@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.IntroActivity">
+
+    <TextView
+        android:id="@+id/waterHubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_hub_title"
+        android:textSize="24dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_above="@+id/containerInputField"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp"/>
+
+    <LinearLayout
+        android:id="@+id/containerInputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/fieldEmail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:hint="E-mail"/>
+
+        <EditText
+            android:id="@+id/fieldPassword"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:hint="Password"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/errorMessageLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/containerInputField"
+        android:layout_centerHorizontal="true"
+        tools:text="Password salah!"
+        android:textColor="@color/colorPrimaryLight"/>
+
+    <Button
+        android:id="@+id/signButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/errorMessageLogin"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sign_in"
+        android:textColor="@color/colorWhite"
+        android:textAllCaps="false"
+        android:background="@drawable/btn_rounded_primary_dark"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/forgot_password"
+        android:textColor="@color/colorPrimary"/>
+
+</RelativeLayout>

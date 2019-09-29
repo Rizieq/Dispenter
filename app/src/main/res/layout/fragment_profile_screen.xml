@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.IntroActivity">
+
+    <TextView
+        android:id="@+id/profileFullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Wibowo"
+        android:textSize="24dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_above="@+id/containerInputField"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/containerInputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/email_hint"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:gravity="left"/>
+
+        <EditText
+            android:id="@+id/fieldEmail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:enabled="false"
+            android:hint="@string/email_hint"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/phone_hint"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:gravity="left"/>
+
+        <EditText
+            android:id="@+id/fieldPhone"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:textSize="16dp"
+            android:enabled="false"
+            android:hint="@string/phone_hint"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/birthdate_simple_hint"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:gravity="left"/>
+
+        <EditText
+            android:id="@+id/fieldBirthDate"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:textSize="16dp"
+            android:enabled="false"
+            android:hint="@string/birthdate_hint"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/gender_hint"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:gravity="left"/>
+
+        <EditText
+            android:id="@+id/fieldGender"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:enabled="false"
+            android:hint="@string/gender_hint"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/changePassword"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/containerInputField"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Change Password"
+        android:textColor="@color/colorPrimary"
+        android:textAllCaps="false"
+        android:background="@drawable/btn_rounded_border_primary_dark"/>
+
+</RelativeLayout>

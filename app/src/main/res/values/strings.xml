@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">Dispenter</string>
+    <string name="button_generate_qrcode">generate</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+    <string name="water_hub_title">Water Hub</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="email_hint">E-mail</string>
+    <string name="birthdate_hint">Birthdate (DD/MM/YY)</string>
+    <string name="birthdate_simple_hint">Birthdate</string>
+    <string name="gender_hint">Gender</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Re-enter Password</string>
+    <string name="title_activity_home_navigation_drawer">HomeNavigationDrawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Water hub</string>
+    <string name="nav_header_subtitle">lorem ipsum</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_main_home">MainHomeActivity</string>
+    <string name="phone_hint">Phone</string>
+    <string name="choose_your_order">Choose Your Order</string>
+    <string name="cold_water">Cold Water</string>
+    <string name="normal_water">Normal Water</string>
+    <string name="tumbler">Tumbler</string>
 </resources>
