@@ -37,27 +37,41 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun doRegister() {
-        if (isBirthdateValid()) {
-            renderLoading(true)
-            val userData = getDataUser()
-            Api.usersService()
-                .register(userData)
-                .enqueue(
-                    object : Callback<String> {
-                        override fun onFailure(call: Call<String>, t: Throwable) {
-                            showErrorNetwork()
-                            renderLoading(false)
-                        }
+        if (isAllFieldIsComplete()) {
+            if (isBirthdateValid()) {
+                renderLoading(true)
+                val userData = getDataUser()
+                Api.usersService()
+                    .register(userData)
+                    .enqueue(
+                        object : Callback<String> {
+                            override fun onFailure(call: Call<String>, t: Throwable) {
+                                showErrorNetwork()
+                                renderLoading(false)
+                            }
 
-                        override fun onResponse(call: Call<String>, response: Response<String>) {
-                            onRegistrationResultReceived(response)
-                            renderLoading(false)
+                            override fun onResponse(call: Call<String>, response: Response<String>) {
+                                onRegistrationResultReceived(response)
+                                renderLoading(false)
+                            }
                         }
-                    }
-                )
+                    )
+            } else {
+                showToast("birthdate should using sample format.")
+            }
         } else {
-            showToast("birthdate should using sample format.")
+            showToast("Please fill all the field.")
         }
+    }
+
+    private fun isAllFieldIsComplete(): Boolean {
+        val name = fieldFullname.text.isNotBlank()
+        val bod = fieldBirthDate.text.isNotBlank()
+        val email = fieldEmail.text.isNotBlank()
+        val gender = fieldGender.text.isNotBlank()
+        val phone = fieldPhone.text.isNotBlank()
+        val password = fieldPassword.text.isNotBlank()
+        return name && bod && email && gender && phone && password
     }
 
     private fun isBirthdateValid(): Boolean {

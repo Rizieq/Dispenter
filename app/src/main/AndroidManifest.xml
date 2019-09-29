@@ -12,8 +12,10 @@
         android:roundIcon="@drawable/watericon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ResetPasswordActivity"
-            android:label="@string/label_reset_password"></activity>
+        <activity android:name=".activity.EditProfileActivity"></activity>
+        <activity
+            android:name=".activity.ResetPasswordActivity"
+            android:label="@string/label_reset_password" />
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/label_login" />

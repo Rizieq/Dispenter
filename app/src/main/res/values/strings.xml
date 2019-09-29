@@ -38,4 +38,5 @@
     <string name="label_login">Login</string>
     <string name="label_barcode">Barcode Anda</string>
     <string name="label_reset_password">Reset Password</string>
+    <string name="btn_edit_label">Edit</string>
 </resources>

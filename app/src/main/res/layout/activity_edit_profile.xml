@@ -6,24 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".activity.IntroActivity">
 
-    <TextView
-        android:id="@+id/profileFullname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Wibowo"
-        android:textSize="24dp"
-        android:textColor="@color/colorPrimary"
-        android:layout_above="@+id/containerInputField"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"/>
-
     <LinearLayout
         android:id="@+id/containerInputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
         android:gravity="center_horizontal">
 
         <TextView
@@ -47,6 +36,22 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:padding="4dp"
+            android:text="@string/full_name_hint"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:gravity="left"/>
+
+        <EditText
+            android:id="@+id/fieldFullname"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:hint="@string/full_name_hint"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
             android:text="@string/phone_hint"
             android:textColor="@color/colorPrimary"
             android:textSize="18dp"
@@ -58,7 +63,6 @@
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:textSize="16dp"
-            android:enabled="false"
             android:hint="@string/phone_hint"/>
 
         <TextView
@@ -76,7 +80,6 @@
             android:layout_height="wrap_content"
             android:inputType="date"
             android:textSize="16dp"
-            android:enabled="false"
             android:hint="@string/birthdate_hint"/>
 
         <TextView
@@ -93,7 +96,6 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:enabled="false"
             android:hint="@string/gender_hint"/>
 
     </LinearLayout>
@@ -102,9 +104,10 @@
         android:id="@+id/btnEdit"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_rounded_border_primary_dark"
-        android:layout_below="@+id/containerInputField"
         android:layout_centerHorizontal="true"
-        android:text="@string/btn_edit_label"/>
+        android:layout_below="@+id/containerInputField"
+        android:text="@string/btn_edit_label"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/btn_rounded_border_primary_dark"/>
 
 </RelativeLayout>

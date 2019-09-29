@@ -1,5 +1,6 @@
 package com.intech.activity.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.intech.R
+import com.intech.activity.EditProfileActivity
 import com.intech.activity.ui.base.BaseFragment
 import com.intech.data.UserToken
 import com.intech.data.UsersRepository
@@ -38,6 +40,12 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
                 phoneNumber.value = UserToken.phone
             }
         }
+
+        fun goToEditProfileScreen() {
+            view.activity {
+                it.startActivity(Intent(it, EditProfileActivity::class.java))
+            }
+        }
     }
 
     override val state: State get() = ViewModelProviders.of(this).get(State::class.java)
@@ -55,6 +63,13 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
         super.onViewCreated(view, savedInstanceState)
         observeUserProfile()
         presenter.getText()
+        setActionClickListener()
+    }
+
+    private fun setActionClickListener() {
+        btnEdit.setOnClickListener {
+            presenter.goToEditProfileScreen()
+        }
     }
 
     private fun observeUserProfile() {

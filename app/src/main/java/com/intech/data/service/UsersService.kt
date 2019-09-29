@@ -24,4 +24,9 @@ interface UsersService {
     fun resetPassword(
         @Query("val") email: String
     ): Call<String>
+
+    @GET("/edit.php")
+    fun editProfile(
+        @Query("val") userData: String
+    ): Call<String>
 }
