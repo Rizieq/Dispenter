@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
 
     <TextView
         android:id="@+id/orderTitle"
@@ -36,9 +37,8 @@
                 android:id="@+id/coldWater"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_menu_camera"
-                android:tint="@color/colorPrimaryDark"
-                android:background="@drawable/btn_rounded_border_primary_dark"/>
+                android:src="@drawable/cold_icon"
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,9 +64,8 @@
                 android:id="@+id/normalWater"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_menu_slideshow"
-                android:tint="@color/colorPrimaryDark"
-                android:background="@drawable/btn_rounded_border_primary_dark"/>
+                android:src="@drawable/normal_icon"
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -90,14 +89,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">
 
-
         <ImageView
             android:id="@+id/tumblerWater"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_menu_gallery"
-            android:tint="@color/colorPrimaryDark"
-            android:background="@drawable/btn_rounded_border_primary_dark"/>
+            android:src="@drawable/normal_icon"
+            android:scaleType="fitXY"/>
 
         <TextView
             android:layout_width="wrap_content"

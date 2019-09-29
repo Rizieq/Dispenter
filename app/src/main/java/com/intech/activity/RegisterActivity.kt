@@ -37,24 +37,39 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun doRegister() {
-        renderLoading(true)
+        if (isBirthdateValid()) {
+            renderLoading(true)
+            val userData = getDataUser()
+            Api.usersService()
+                .register(userData)
+                .enqueue(
+                    object : Callback<String> {
+                        override fun onFailure(call: Call<String>, t: Throwable) {
+                            showErrorNetwork()
+                            renderLoading(false)
+                        }
 
-        val userData = getDataUser()
-        Api.usersService()
-            .register(userData)
-            .enqueue(
-                object : Callback<String> {
-                    override fun onFailure(call: Call<String>, t: Throwable) {
-                        showErrorNetwork()
-                        renderLoading(false)
+                        override fun onResponse(call: Call<String>, response: Response<String>) {
+                            onRegistrationResultReceived(response)
+                            renderLoading(false)
+                        }
                     }
+                )
+        } else {
+            showToast("birthdate should using sample format.")
+        }
+    }
 
-                    override fun onResponse(call: Call<String>, response: Response<String>) {
-                        onRegistrationResultReceived(response)
-                        renderLoading(false)
-                    }
-                }
-            )
+    private fun isBirthdateValid(): Boolean {
+        var isValid = false
+        val birthDate = fieldBirthDate.text.toString().split("/")
+        if (birthDate.size == 3) {
+            if (birthDate[0].toInt() in 1..30 &&
+                birthDate[1].toInt() in 1..12) {
+                isValid = true
+            }
+        }
+        return isValid
     }
 
     private fun getDataUser(): String {

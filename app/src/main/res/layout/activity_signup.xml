@@ -87,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/colorPrimary"
+                android:inputType="textPassword"
                 android:hint="@string/password_hint"/>
 
             <Button

@@ -102,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun renderPasswordIncorrect(isIncorrect: Boolean) {
         errorMessageLogin.apply {
-            text = "Password salah!"
+            text = "wrong password!"
             visibility = View.VISIBLE.takeIf { isIncorrect } ?: View.GONE
         }
     }
