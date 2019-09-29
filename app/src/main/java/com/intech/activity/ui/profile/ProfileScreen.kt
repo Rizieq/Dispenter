@@ -1,11 +1,11 @@
 package com.intech.activity.ui.profile
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -43,7 +43,7 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
 
         fun goToEditProfileScreen() {
             view.activity {
-                it.startActivity(Intent(it, EditProfileActivity::class.java))
+                it.startActivityForResult(Intent(it, EditProfileActivity::class.java), CODE_EDIT)
             }
         }
     }
@@ -62,8 +62,12 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeUserProfile()
-        presenter.getText()
         setActionClickListener()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.getText()
     }
 
     private fun setActionClickListener() {
@@ -105,5 +109,9 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
                 }
             )
         }
+    }
+
+    companion object {
+        const val CODE_EDIT = 1020
     }
 }

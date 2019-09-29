@@ -1,7 +1,9 @@
 package com.intech.activity
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.intech.R
 import com.intech.data.UserToken
@@ -12,12 +14,20 @@ import retrofit2.Response
 
 class EditProfileActivity : AppCompatActivity() {
 
+    private var isLoading = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        renderLoading(false)
         setActionClickListner()
         setUserData()
+    }
+
+    private fun renderLoading(isLoading: Boolean) {
+        this.isLoading = isLoading
+        progressBar.visibility = View.VISIBLE.takeIf { isLoading } ?: View.GONE
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -27,13 +37,13 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun setActionClickListner() {
         btnEdit.setOnClickListener {
-            if (isAllFieldIsComplete()) {
+            if (!isLoading && isAllFieldIsComplete()) {
                 if (isBirthdateValid()) {
                     updateProfile()
                 } else {
                     showWarning("birthdate should using sample format.")
                 }
-            }  else {
+            } else {
                 showWarning("Please fill all the field.")
             }
         }
@@ -50,12 +60,14 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun updateProfile() {
+        renderLoading(true)
         val userData = getUserData()
         Api.usersService()
             .editProfile(userData)
             .enqueue(object : retrofit2.Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
                     showWarning("Something wrong")
+                    renderLoading(false)
                 }
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -70,6 +82,7 @@ class EditProfileActivity : AppCompatActivity() {
             .enqueue(object : retrofit2.Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
                     showWarning("Something wrong")
+                    renderLoading(false)
                 }
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -99,21 +112,27 @@ class EditProfileActivity : AppCompatActivity() {
                 ).show()
             }
         }
+        renderLoading(false)
     }
 
     private fun onUpdateResultReceived(response: Response<String>) {
         if (response.isSuccessful) {
             when(response.body().toString()) {
                 UPDATE_SUCCESS -> refreshUserData()
-                else -> showWarning("Something wrong")
+                else -> {
+                    showWarning("Something wrong")
+                    renderLoading(false)
+                }
             }
         } else {
             showWarning("Something wrong")
+            renderLoading(false)
         }
     }
 
     private fun updateProfileSuccess() {
         showWarning("Edit profile success")
+        setResult(Activity.RESULT_OK)
         finish()
     }
 
