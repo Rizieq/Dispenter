@@ -4,7 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.IntroActivity">
+    tools:context=".activity.IntroActivity"
+    android:background="@color/colorWhite">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/watericon"
+        android:layout_above="@id/waterHubTitle"
+        android:layout_marginBottom="16dp"/>
 
     <TextView
         android:id="@+id/waterHubTitle"

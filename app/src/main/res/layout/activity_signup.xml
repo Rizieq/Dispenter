@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.IntroActivity">
+    tools:context=".activity.IntroActivity"
+    android:background="@color/colorWhite">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/watericon"
+        android:layout_above="@id/waterHubTitle"/>
 
     <TextView
         android:id="@+id/waterHubTitle"
@@ -15,7 +23,7 @@
         android:layout_above="@+id/containerInputField"
         android:textColor="@color/colorPrimary"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="8dp"/>
 
     <ScrollView
         android:id="@+id/containerInputField"
