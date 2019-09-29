@@ -2,26 +2,39 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.intech">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".DispenterApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/watericon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/watericon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity"></activity>
-        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.ResetPasswordActivity"
+            android:label="@string/label_reset_password"></activity>
         <activity
-            android:name=".activity.MainHomeActivity"
-            android:label="@string/title_activity_main_home"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".activity.LoginActivity"
+            android:label="@string/label_login" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:label="@string/label_register" />
+        <activity
+            android:name=".activity.IntroActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.IntroActivity" />
+        <activity
+            android:name=".activity.MainHomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.BarcodeActivity"
+            android:label="@string/label_barcode" />
     </application>
 
 </manifest>

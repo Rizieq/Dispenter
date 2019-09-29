@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dispenter</string>
+    <string name="app_name">Waterhub</string>
     <string name="button_generate_qrcode">generate</string>
     <string name="sign_in">Sign In</string>
     <string name="register">Register</string>
@@ -16,7 +16,7 @@
     <string name="title_activity_home_navigation_drawer">HomeNavigationDrawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Water hub</string>
+    <string name="nav_header_title">Waterhub</string>
     <string name="nav_header_subtitle">lorem ipsum</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -33,4 +33,9 @@
     <string name="cold_water">Cold Water</string>
     <string name="normal_water">Normal Water</string>
     <string name="tumbler">Tumbler</string>
+
+    <string name="label_register">Signup</string>
+    <string name="label_login">Login</string>
+    <string name="label_barcode">Barcode Anda</string>
+    <string name="label_reset_password">Reset Password</string>
 </resources>

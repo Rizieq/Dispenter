@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.intech.R
 import com.intech.activity.ui.base.BaseFragment
+import com.intech.data.UserToken
 import com.intech.data.UsersRepository
 import kotlinx.android.synthetic.main.fragment_profile_screen.*
 
@@ -30,17 +31,11 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
     ) : BaseFragment.Presenter<State, ProfileScreen, UsersRepository>(state, view, repository) {
         fun getText() {
             state.apply {
-                email.value = "123@gmail.com"
-                gender.value = "Pria"
-                fullname.value = "wahyu"
-                birthDate.value = "10/12/94"
-                phoneNumber.value = "089213"
-            }
-        }
-
-        fun showToast() {
-            view.activity {
-                Toast.makeText(it, "Tes", Toast.LENGTH_SHORT).show()
+                email.value = UserToken.email
+                gender.value = UserToken.gender
+                fullname.value = UserToken.userName
+                birthDate.value = UserToken.birthdate
+                phoneNumber.value = UserToken.phone
             }
         }
     }
@@ -59,14 +54,7 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeUserProfile()
-        setOnActionButtonClicked()
         presenter.getText()
-    }
-
-    private fun setOnActionButtonClicked() {
-        changePassword.setOnClickListener {
-            presenter.showToast()
-        }
     }
 
     private fun observeUserProfile() {

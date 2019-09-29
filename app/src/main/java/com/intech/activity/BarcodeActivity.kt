@@ -1,11 +1,12 @@
 package com.intech.activity
 
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.intech.R
+import com.intech.data.UserToken
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
@@ -18,8 +19,9 @@ class BarcodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        actionGenerateQrcode.setOnClickListener {
-            actionGenerateQrcode()
+        val data = intent.getStringExtra(TYPE)
+        if (!data.isNullOrEmpty()) {
+            actionGenerateQrcode(data)
         }
     }
 
@@ -28,11 +30,12 @@ class BarcodeActivity : AppCompatActivity() {
         return true
     }
 
-    fun actionGenerateQrcode() {
+    fun actionGenerateQrcode(type: String) {
+        val encodedText = "${UserToken.email},$type"
         GlobalScope.launch(Dispatchers.IO) {
             val bitmapMatrix = MultiFormatWriter().run {
                 encode(
-                    TEXT_TO_ENCODE, BarcodeFormat.QR_CODE,
+                    encodedText, BarcodeFormat.QR_CODE,
                     QRCODE_SIZE,
                     QRCODE_SIZE
                 )
@@ -50,6 +53,6 @@ class BarcodeActivity : AppCompatActivity() {
 
     companion object {
         private const val QRCODE_SIZE = 200
-        private const val TEXT_TO_ENCODE = "jadi nih ra :p"
+        const val TYPE = "type"
     }
 }

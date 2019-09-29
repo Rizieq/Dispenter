@@ -81,14 +81,6 @@
                 android:textColorHint="@color/colorPrimary"
                 android:hint="@string/password_hint"/>
 
-            <EditText
-                android:id="@+id/fieldConfirmPassword"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:textColorHint="@color/colorPrimary"
-                android:hint="@string/confirm_password_hint"/>
-
             <Button
                 android:id="@+id/signButton"
                 android:layout_width="250dp"
@@ -99,6 +91,13 @@
                 android:textColor="@color/colorWhite"
                 android:textAllCaps="false"
                 android:background="@drawable/btn_rounded_primary_dark"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"/>
 
         </LinearLayout>
 

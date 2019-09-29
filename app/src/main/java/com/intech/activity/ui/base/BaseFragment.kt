@@ -1,14 +1,9 @@
 package com.intech.activity.ui.base
 
-/**
- * Created by YudaOktavian on 21-Sep-2019
- */
+
 import android.app.Activity
 import androidx.fragment.app.Fragment
 
-/**
- * Created by YudaOktavian on 03/02/2019
- */
 abstract class BaseFragment<S, P> : Fragment(), BaseFragmentContract<S, P>, MainPresenter {
 
     open class Presenter <S, V, R> (val state: S, val view: V, val repository: R)

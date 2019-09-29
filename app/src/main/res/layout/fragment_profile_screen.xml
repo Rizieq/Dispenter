@@ -98,16 +98,4 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/changePassword"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/containerInputField"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"
-        android:text="Change Password"
-        android:textColor="@color/colorPrimary"
-        android:textAllCaps="false"
-        android:background="@drawable/btn_rounded_border_primary_dark"/>
-
 </RelativeLayout>

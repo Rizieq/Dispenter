@@ -1,5 +1,6 @@
 package com.intech.activity.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.intech.R
+import com.intech.activity.BarcodeActivity
 import com.intech.activity.ui.base.BaseFragment
 import com.intech.data.HomeRepository
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -23,6 +25,15 @@ class HomeScreen : BaseFragment<HomeScreen.State, HomeScreen.Presenter>() {
         fun showToast(message: String) {
             view.activity {
                 Toast.makeText(it, message, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        fun goToBarcodeScreen(type: String) {
+            view.activity {
+                val intent = Intent(it, BarcodeActivity::class.java).apply {
+                    putExtra(BarcodeActivity.TYPE, type)
+                }
+                it.startActivity(intent)
             }
         }
     }
@@ -45,13 +56,18 @@ class HomeScreen : BaseFragment<HomeScreen.State, HomeScreen.Presenter>() {
 
     private fun setOnActionButtonClicked() {
         coldWaterAction.setOnClickListener {
-            presenter.showToast("cold water")
+            presenter.goToBarcodeScreen(COLD_WATER)
         }
         normalWaterAction.setOnClickListener {
-            presenter.showToast("normal water")
+            presenter.goToBarcodeScreen(NORMAL_WATER)
         }
         tumblerAction.setOnClickListener {
             presenter.showToast("tumbler")
         }
+    }
+
+    companion object {
+        private const val NORMAL_WATER = "normal"
+        private const val COLD_WATER = "dingin"
     }
 }
