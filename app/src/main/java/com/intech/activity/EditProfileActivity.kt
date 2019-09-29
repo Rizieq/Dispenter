@@ -118,11 +118,12 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun getUserData(): String {
-        var phone = fieldPhone.text.toString()
+        val phone = fieldPhone.text.toString()
         val birthdate = fieldBirthDate.text.toString()
         val gender = fieldGender.text.toString()
+        val fullname = fieldFullname.text.toString()
 
-        return "${UserToken.email},$phone,$birthdate,$gender"
+        return "${UserToken.email},$fullname,$phone,$birthdate,$gender"
     }
 
     private fun isAllFieldIsComplete(): Boolean {
