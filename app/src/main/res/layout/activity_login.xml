@@ -8,10 +8,10 @@
     android:background="@color/colorWhite">
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/watericon"
+        android:src="@drawable/waterhub_logo_new_01"
         android:layout_above="@id/waterHubTitle"
         android:layout_marginBottom="16dp"/>
 
@@ -19,7 +19,7 @@
         android:id="@+id/waterHubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/water_hub_title"
+
         android:textSize="24dp"
         android:textColor="@color/colorPrimary"
         android:layout_above="@+id/containerInputField"
@@ -43,14 +43,32 @@
             android:textColorHint="@color/colorPrimary"
             android:hint="E-mail"/>
 
-        <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            app:errorEnabled="true"
+            android:textColorHint="@color/colorPrimary"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fieldPassword"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/password_hint"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--<EditText
             android:id="@+id/fieldPassword"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimary"
             android:inputType="textPassword"
-            android:hint="Password"/>
+            android:hint="Password"/>-->
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -80,6 +98,8 @@
         android:textColor="@color/colorWhite"
         android:textAllCaps="false"
         android:background="@drawable/btn_rounded_primary_dark"/>
+
+
 
     <TextView
         android:id="@+id/forgotPassword"

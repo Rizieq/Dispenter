@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-</PreferenceScreen>
+<actions>
+    <action intentName="actions.intent.CREATE_TAXI_RESERVATION">
+        <fulfillment urlTemplate="https://taxi-actions.firebaseapp.com/order{?dropoffAddress}">
+            <!-- Dropoff location as an address -->
+            <parameter-mapping
+                intentParameter="taxiReservation.dropoffLocation.name"
+                urlParameter="dropoffAddress"/>
+        </fulfillment>
+    </action>
+</actions>

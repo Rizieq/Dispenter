@@ -1,8 +1,12 @@
-package com.intech.data.service
+package com.waterhub.data.service
 
+import com.waterhub.model.Banner
+import io.reactivex.Observable
 import retrofit2.Call
+import retrofit2.http.*
+
 import retrofit2.http.GET
-import retrofit2.http.Query
+
 
 interface UsersService {
     @GET("/register.php")
@@ -16,7 +20,8 @@ interface UsersService {
     ): Call<String>
 
     @GET("/about.php")
-    fun profile(
+    fun
+            profile(
         @Query("val") userData: String
     ): Call<String>
 
@@ -29,4 +34,13 @@ interface UsersService {
     fun editProfile(
         @Query("val") userData: String
     ): Call<String>
+
+
+    @FormUrlEncoded
+    @POST("/getbanner.php")
+    fun getBanners(
+        @Field("gender") gender: String
+    ): Call<List<Banner>>
+
+
 }

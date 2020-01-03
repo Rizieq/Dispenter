@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.intech.activity.ui.home.HomeScreen"
+        android:name="com.waterhub.activity.ui.home.HomeScreen"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.intech.activity.ui.profile.ProfileScreen"
+        android:name="com.waterhub.activity.ui.profile.ProfileScreen"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile_screen" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.intech.activity.ui.logout.LogoutFragment"
+        android:name="com.waterhub.activity.ui.logout.LogoutFragment"
         android:label="@string/menu_logout"
         tools:layout="@layout/fragment_slideshow" />
 

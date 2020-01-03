@@ -1,111 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/orderTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/choose_your_order"
-        android:textSize="28dp"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/orderOptionContainer"
-        android:layout_marginBottom="42dp"/>
 
-    <LinearLayout
-        android:id="@+id/orderOptionContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:weightSum="2">
 
-        <RelativeLayout
-            android:id="@+id/coldWaterAction"
-            android:layout_marginRight="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/coldWater"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/cold_icon"
-                android:scaleType="fitXY"/>
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/welcomeMessageTitle"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginBottom="10dp" />
+
 
             <TextView
+                android:id="@+id/welcomeMessageTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/coldWater"
-                android:text="@string/cold_water"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
-                android:textSize="18dp"
-                android:textColor="@color/colorPrimaryDark"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/normalWaterAction"
-            android:layout_marginLeft="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-
-            <ImageView
-                android:id="@+id/normalWater"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/normal_icon"
-                android:scaleType="fitXY"/>
+                android:layout_above="@+id/orderTitle"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="30dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/welcome"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/orderTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/normalWater"
-                android:text="@string/normal_water"
+                android:layout_above="@+id/orderOptionContainer"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/choose_your_order"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/orderOptionContainer"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:id="@+id/coldWaterAction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/coldWater"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cold" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/normalWaterAction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        android:id="@+id/normalWater"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/normal" />
+
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/letsTile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orderOptionContainer"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/lets_change"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/orderContainer"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/letsTile"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
-                android:textSize="18dp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="2"
 
-        </RelativeLayout>
+                >
 
-    </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/tumblerAction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1">
 
-    <RelativeLayout
-        android:id="@+id/tumblerAction"
-        android:layout_below="@+id/orderOptionContainer"
-        android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+                    <ImageView
+                        android:id="@+id/tumblerWater"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/tumbler" />
 
-        <ImageView
-            android:id="@+id/tumblerWater"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/normal_icon"
-            android:scaleType="fitXY"/>
+                </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tumblerWater"
-            android:text="@string/tumbler"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:textSize="18dp"
-            android:textColor="@color/colorPrimaryDark"/>
+                <RelativeLayout
+                    android:id="@+id/aboutUsAction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1">
 
-    </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/aboutUs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/about_us" />
+
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
 
 </RelativeLayout>

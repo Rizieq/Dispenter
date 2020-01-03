@@ -1,15 +1,15 @@
-package com.intech.activity
+package com.waterhub.activity
 
 import android.content.Intent
-import android.net.wifi.hotspot2.pps.HomeSp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.intech.R
-import com.intech.activity.ui.home.HomeScreen
-import com.intech.data.UserToken
-import com.intech.networking.Api
+import com.waterhub.R
+import com.waterhub.activity.ui.home.HomeScreen
+import com.waterhub.data.UserToken
+import com.waterhub.networking.Api
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         setActionClickListener()
         renderLoading(false)
         renderPasswordIncorrect(false)
@@ -44,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
         forgotPassword.setOnClickListener {
             goToResetPasswordScreen()
         }
+
     }
 
     private fun goToResetPasswordScreen() {
@@ -90,14 +92,53 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginComplete() {
         UserToken.email = fieldEmail.text.toString()
-        showToast("login success. Welcome ${UserToken.email}")
+        fetchUserData()
         goToHome()
+    }
+    private fun fetchUserData() {
+        UserToken.email?.let {
+            Api.usersService()
+                .profile(it)
+                .enqueue(
+                    object : retrofit2.Callback<String> {
+                        override fun onFailure(call: Call<String>, t: Throwable) {
+                            Log.d("LOG_DATA ",t.localizedMessage)
+                        }
+
+                        override fun onResponse(call: Call<String>, response: Response<String>) {
+                            onUserProfileResultReceived(response)
+                        }
+                    }
+                )
+        }
+    }
+
+    private fun onUserProfileResultReceived(response: Response<String>) {
+        if (response.isSuccessful) {
+            val result = response.body().toString()
+            if (result != MainHomeActivity.ERROR) {
+                val splitResponse = response.body().toString().split(",")
+
+                Log.d("LOG_DATA ",splitResponse[0])
+                UserToken.apply {
+                    userId = splitResponse[0]
+                    userName = splitResponse[1]
+                    birthdate = splitResponse[2]
+                    gender = splitResponse[4]
+                    phone = splitResponse[5]
+                }
+            } else {
+                Toast.makeText(this, "Something wrong, please logout and login again", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun goToHome() {
         val intent = Intent(this, MainHomeActivity::class.java)
         startActivity(intent)
         finish()
+
+
     }
 
     private fun renderPasswordIncorrect(isIncorrect: Boolean) {

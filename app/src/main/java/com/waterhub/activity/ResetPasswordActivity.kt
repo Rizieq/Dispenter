@@ -1,10 +1,11 @@
-package com.intech.activity
+package com.waterhub.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import com.intech.R
-import com.intech.networking.Api
+import com.waterhub.R
+import com.waterhub.networking.Api
 import kotlinx.android.synthetic.main.activity_reset_password.*
 import retrofit2.Call
 import retrofit2.Response
@@ -41,19 +42,18 @@ class ResetPasswordActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     onResetResultReceived(response)
+
+
                 }
             })
     }
 
     private fun onResetResultReceived(response: Response<String>) {
         if (response.isSuccessful) {
-            if (response.body().toString() == RESET_PASSWORD_SUCCESS) {
-                showErrorMessage("Reset password success, please check your email")
-                setResult(LoginActivity.RESET_PASSWORD)
-                finish()
-            } else {
-                showErrorMessage("Failed")
-            }
+            Log.d("RESPONSE_RESET ",response.body().toString())
+            showErrorMessage("Reset password success, please check your email")
+            setResult(LoginActivity.RESET_PASSWORD)
+            finish()
         } else {
             showErrorMessage("Something error, please check your connection")
         }

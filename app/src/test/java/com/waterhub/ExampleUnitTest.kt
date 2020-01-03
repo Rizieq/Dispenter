@@ -1,4 +1,4 @@
-package com.intech
+package com.waterhub
 
 import org.junit.Test
 

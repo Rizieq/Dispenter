@@ -10,93 +10,110 @@
         android:id="@+id/containerInputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
         android:layout_marginTop="16dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:gravity="left"
             android:padding="4dp"
             android:text="@string/email_hint"
             android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
-            android:gravity="left"/>
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/fieldEmail"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
             android:enabled="false"
-            android:hint="@string/email_hint"/>
+            android:hint="@string/email_hint"
+            android:textSize="16dp" />
 
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:gravity="left"
             android:padding="4dp"
             android:text="@string/full_name_hint"
             android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
-            android:gravity="left"/>
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/fieldFullname"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:hint="@string/full_name_hint"/>
+            android:hint="@string/full_name_hint"
+            android:textSize="16dp" />
 
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:gravity="left"
             android:padding="4dp"
             android:text="@string/phone_hint"
             android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
-            android:gravity="left"/>
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/fieldPhone"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:hint="@string/phone_hint"
             android:inputType="phone"
-            android:textSize="16dp"
-            android:hint="@string/phone_hint"/>
+            android:textSize="16dp" />
 
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:gravity="left"
             android:padding="4dp"
             android:text="@string/birthdate_simple_hint"
             android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
-            android:gravity="left"/>
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/fieldBirthDate"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:hint="@string/birthdate_hint"
             android:inputType="date"
-            android:textSize="16dp"
-            android:hint="@string/birthdate_hint"/>
+            android:textSize="16dp" />
 
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:gravity="left"
             android:padding="4dp"
             android:text="@string/gender_hint"
             android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
-            android:gravity="left"/>
+            android:textSize="18dp" />
 
-        <EditText
-            android:id="@+id/fieldGender"
+        <RadioGroup
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:hint="@string/gender_hint"/>
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RadioButton
+                android:id="@+id/rdiMaleProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/rdiFemaleProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:text="Female" />
+
+        </RadioGroup>
+
 
     </LinearLayout>
 
@@ -104,18 +121,40 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/btnEdit"
-        android:layout_marginTop="16dp"/>
 
-    <Button
-        android:id="@+id/btnEdit"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearEdit"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <LinearLayout
+        android:id="@+id/linearEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/containerInputField"
-        android:text="@string/btn_edit_label"
-        android:textColor="@color/colorPrimaryDark"
-        android:background="@drawable/btn_rounded_border_primary_dark"/>
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_rounded_primary_dark"
+            android:text="@string/btn_edit_label"
+            android:textColor="@android:color/white"
+            android:layout_margin="15dp"/>
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_rounded_primary_dark"
+            android:text="@string/Cancel"
+            android:textColor="@android:color/white"
+            android:layout_margin="15dp"/>
+
+
+    </LinearLayout>
 
 </RelativeLayout>

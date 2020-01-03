@@ -1,9 +1,7 @@
-package com.intech.activity.ui.profile
+package com.waterhub.activity.ui.profile
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +9,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.intech.R
-import com.intech.activity.EditProfileActivity
-import com.intech.activity.ui.base.BaseFragment
-import com.intech.data.UserToken
-import com.intech.data.UsersRepository
-import kotlinx.android.synthetic.main.activity_edit_profile.view.*
+import com.waterhub.R
+import com.waterhub.activity.EditProfileActivity
+import com.waterhub.activity.ui.base.BaseFragment
+import com.waterhub.data.UserToken
+import com.waterhub.data.UsersRepository
 import kotlinx.android.synthetic.main.fragment_profile_screen.*
 
 class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>() {
@@ -59,14 +56,9 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
         savedInstanceState: Bundle?
     ): View? {
 
-
-        /*return inflater.inflate(R.layout.fragment_profile_screen, container, false)*/
         val viewGroup = inflater.inflate(R.layout.fragment_profile_screen, container, false) as ViewGroup
 
 
-
-        /*viewGroup.rdiFemaleProfile.isChecked = false
-        viewGroup.rdiMaleProfile.isChecked = true*/
 
         return viewGroup
     }

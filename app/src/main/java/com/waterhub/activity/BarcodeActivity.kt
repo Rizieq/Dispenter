@@ -1,4 +1,4 @@
-package com.intech.activity
+package com.waterhub.activity
 
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
-import com.intech.R
-import com.intech.data.UserToken
+import com.waterhub.R
+import com.waterhub.data.UserToken
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
@@ -20,13 +20,14 @@ class BarcodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val data = intent.getStringExtra(TYPE)
         Log.d("LOG_QR",data)
 
         if (data.equals("normal")){
-            txtTitleBarcode.setText("Normal Water")
+            supportActionBar?.title = "Normal Water"
         } else if(data.equals("dingin")){
-            txtTitleBarcode.setText("Cold Water")
+            supportActionBar?.title = "Cold Water"
         }
 
 

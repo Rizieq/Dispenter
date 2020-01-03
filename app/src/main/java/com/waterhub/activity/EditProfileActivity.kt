@@ -1,32 +1,32 @@
-package com.intech.activity
+package com.waterhub.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.intech.R
-import com.intech.data.UserToken
-import com.intech.networking.Api
+import com.waterhub.R
+import com.waterhub.data.UserToken
+import com.waterhub.networking.Api
 import com.szagurskii.patternedtextwatcher.PatternedTextWatcher
+import com.waterhub.activity.ui.profile.ProfileScreen
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.fieldBirthDate
 import kotlinx.android.synthetic.main.activity_edit_profile.fieldEmail
 import kotlinx.android.synthetic.main.activity_edit_profile.fieldFullname
 import kotlinx.android.synthetic.main.activity_edit_profile.fieldPhone
 import kotlinx.android.synthetic.main.activity_edit_profile.progressBar
-import kotlinx.android.synthetic.main.activity_edit_profile.view.*
-import kotlinx.android.synthetic.main.activity_signup.*
 import retrofit2.Call
 import retrofit2.Response
 
 class EditProfileActivity : AppCompatActivity() {
 
     private var isLoading = false
-    private var genderValue = ""
 
+    private var user = UserToken
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +38,8 @@ class EditProfileActivity : AppCompatActivity() {
         setGender()
 
 
-        genderValue = rdiFemaleProfile.text.toString()
-        genderValue = rdiMaleProfile.text.toString()
+        user.gender = rdiFemaleProfile.text.toString()
+        user.gender = rdiMaleProfile.text.toString()
 
         fieldBirthDate.addTextChangedListener(PatternedTextWatcher("##/##/####"))
 
@@ -52,19 +52,22 @@ class EditProfileActivity : AppCompatActivity() {
 
         rdiMaleProfile.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                genderValue = "Male"
-            }
+                user.gender = "Male"
 
+            }
 
         })
 
 
         rdiFemaleProfile.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                genderValue = "Female"
+                user.gender = "Female"
 
             }
+
         })
+
+
     }
 
 
@@ -94,6 +97,8 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun setActionClickListner() {
+
+
         btnEdit.setOnClickListener {
             if (!isLoading && isAllFieldIsComplete()) {
 
@@ -107,10 +112,16 @@ class EditProfileActivity : AppCompatActivity() {
                 showWarning("Please fill all the field.")
             }
         }
+
+        btnCancel.setOnClickListener {
+            setResult(Activity.RESULT_OK)
+            finish()
+        }
     }
 
 
     private fun updateProfile() {
+
         renderLoading(true)
         val userData = getUserData()
         Api.usersService()
@@ -135,9 +146,12 @@ class EditProfileActivity : AppCompatActivity() {
             fieldPhone.setText(phone)
 
             if (gender == "Male") {
-                rdiMaleProfile?.isChecked = true
+                    rdiMaleProfile?.isChecked = true
+
+
             } else if (gender == "Female") {
                 rdiFemaleProfile?.isChecked = true
+
             }
 
         }
@@ -169,6 +183,8 @@ class EditProfileActivity : AppCompatActivity() {
                     birthdate = splitResponse[2]
                     gender = splitResponse[4]
                     phone = splitResponse[5]
+
+                    Log.d("LOG_USER ", gender)
                 }
                 updateProfileSuccess()
             } else {
@@ -206,8 +222,7 @@ class EditProfileActivity : AppCompatActivity() {
     private fun getUserData(): String {
         val phone = fieldPhone.text.toString()
         val birthdate = fieldBirthDate.text.toString()
-
-        val gender = genderValue
+        val gender = user.gender
         val fullname = fieldFullname.text.toString()
 
         return "${UserToken.email},$fullname,$phone,$birthdate,$gender"

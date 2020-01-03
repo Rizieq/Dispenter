@@ -1,4 +1,4 @@
-package com.intech.activity.ui.base
+package com.waterhub.activity.ui.base
 
 
 import android.app.Activity

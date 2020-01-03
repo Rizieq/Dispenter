@@ -1,17 +1,22 @@
-package com.intech.activity
+package com.waterhub.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.intech.R
-import com.intech.data.UserToken
+import com.waterhub.R
+import com.waterhub.data.UserToken
 import kotlinx.android.synthetic.main.activity_intro.*
+
+
 
 class IntroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
+
+
+
         checkUserLoginOrNotLogin()
 
         signButton.setOnClickListener {
@@ -41,7 +46,6 @@ class IntroActivity : AppCompatActivity() {
     private fun actionGoToSignIn() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
-        finish()
     }
 
     private fun actionGoToSignUp() {

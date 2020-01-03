@@ -1,3 +1,3 @@
-package com.intech.data
+package com.waterhub.data
 
 class UsersRepository

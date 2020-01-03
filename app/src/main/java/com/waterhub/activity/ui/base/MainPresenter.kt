@@ -1,3 +1,3 @@
-package com.intech.activity.ui.base
+package com.waterhub.activity.ui.base
 
 interface MainPresenter : Contract.View

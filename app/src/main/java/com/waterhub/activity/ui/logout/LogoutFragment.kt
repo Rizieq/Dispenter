@@ -1,4 +1,4 @@
-package com.intech.activity.ui.logout
+package com.waterhub.activity.ui.logout
 
 import android.os.Bundle
 import android.view.LayoutInflater

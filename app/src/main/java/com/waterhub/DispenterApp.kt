@@ -1,4 +1,4 @@
-package com.intech
+package com.waterhub
 
 import android.app.Application
 import android.content.Context

@@ -1,7 +1,7 @@
-package com.intech.data
+package com.waterhub.data
 
 import android.content.Context
-import com.intech.DispenterApp
+import com.waterhub.DispenterApp
 
 object UserToken {
     private const val SESSION_USER = "session"
