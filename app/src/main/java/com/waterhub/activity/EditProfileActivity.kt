@@ -1,20 +1,32 @@
 package com.intech.activity
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.CompoundButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.intech.R
 import com.intech.data.UserToken
 import com.intech.networking.Api
+import com.szagurskii.patternedtextwatcher.PatternedTextWatcher
 import kotlinx.android.synthetic.main.activity_edit_profile.*
+import kotlinx.android.synthetic.main.activity_edit_profile.fieldBirthDate
+import kotlinx.android.synthetic.main.activity_edit_profile.fieldEmail
+import kotlinx.android.synthetic.main.activity_edit_profile.fieldFullname
+import kotlinx.android.synthetic.main.activity_edit_profile.fieldPhone
+import kotlinx.android.synthetic.main.activity_edit_profile.progressBar
+import kotlinx.android.synthetic.main.activity_edit_profile.view.*
+import kotlinx.android.synthetic.main.activity_signup.*
 import retrofit2.Call
 import retrofit2.Response
 
 class EditProfileActivity : AppCompatActivity() {
 
     private var isLoading = false
+    private var genderValue = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +35,38 @@ class EditProfileActivity : AppCompatActivity() {
         renderLoading(false)
         setActionClickListner()
         setUserData()
+        setGender()
+
+
+        genderValue = rdiFemaleProfile.text.toString()
+        genderValue = rdiMaleProfile.text.toString()
+
+        fieldBirthDate.addTextChangedListener(PatternedTextWatcher("##/##/####"))
+
+        fieldPhone.addTextChangedListener(PatternedTextWatcher("### ### ### ###"))
+
     }
+
+    private fun setGender() {
+
+
+        rdiMaleProfile.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                genderValue = "Male"
+            }
+
+
+        })
+
+
+        rdiFemaleProfile.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                genderValue = "Female"
+
+            }
+        })
+    }
+
 
     private fun renderLoading(isLoading: Boolean) {
         this.isLoading = isLoading
@@ -35,29 +78,37 @@ class EditProfileActivity : AppCompatActivity() {
         return true
     }
 
+    private fun isBirthdateValid(): Boolean {
+
+        var isValid = false
+        val birthDate = fieldBirthDate.text.toString().split("/")
+        if (birthDate.size == 3) {
+            if (birthDate[0].toInt() in 1..30 &&
+                birthDate[1].toInt() in 1..12 &&
+                birthDate[2].isNotEmpty()
+            ) {
+                isValid = true
+            }
+        }
+        return isValid
+    }
+
     private fun setActionClickListner() {
         btnEdit.setOnClickListener {
             if (!isLoading && isAllFieldIsComplete()) {
+
                 if (isBirthdateValid()) {
                     updateProfile()
                 } else {
                     showWarning("birthdate should using sample format.")
                 }
+
             } else {
                 showWarning("Please fill all the field.")
             }
         }
     }
 
-    private fun setUserData() {
-        with(UserToken) {
-            fieldFullname.setText(userName)
-            fieldEmail.setText(email)
-            fieldBirthDate.setText(birthdate)
-            fieldGender.setText(gender)
-            fieldPhone.setText(phone)
-        }
-    }
 
     private fun updateProfile() {
         renderLoading(true)
@@ -74,6 +125,22 @@ class EditProfileActivity : AppCompatActivity() {
                     onUpdateResultReceived(response)
                 }
             })
+    }
+
+    private fun setUserData() {
+        with(UserToken) {
+            fieldFullname.setText(userName)
+            fieldEmail.setText(email)
+            fieldBirthDate.setText(birthdate)
+            fieldPhone.setText(phone)
+
+            if (gender == "Male") {
+                rdiMaleProfile?.isChecked = true
+            } else if (gender == "Female") {
+                rdiFemaleProfile?.isChecked = true
+            }
+
+        }
     }
 
     private fun refreshUserData() {
@@ -117,7 +184,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun onUpdateResultReceived(response: Response<String>) {
         if (response.isSuccessful) {
-            when(response.body().toString()) {
+            when (response.body().toString()) {
                 UPDATE_SUCCESS -> refreshUserData()
                 else -> {
                     showWarning("Something wrong")
@@ -139,7 +206,8 @@ class EditProfileActivity : AppCompatActivity() {
     private fun getUserData(): String {
         val phone = fieldPhone.text.toString()
         val birthdate = fieldBirthDate.text.toString()
-        val gender = fieldGender.text.toString()
+
+        val gender = genderValue
         val fullname = fieldFullname.text.toString()
 
         return "${UserToken.email},$fullname,$phone,$birthdate,$gender"
@@ -147,24 +215,15 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun isAllFieldIsComplete(): Boolean {
         val name = fieldFullname.text.isNotBlank()
-        val bod = fieldBirthDate.text.isNotBlank()
+        val bod = fieldBirthDate.text?.isNotBlank()
         val email = fieldEmail.text.isNotBlank()
-        val gender = fieldGender.text.isNotBlank()
-        val phone = fieldPhone.text.isNotBlank()
-        return name && bod && email && gender && phone
+
+        val gender = rdiMaleProfile.isChecked || rdiFemaleProfile.isChecked
+        val phone = fieldPhone.text?.isNotBlank()
+
+        return name && bod!! && email && gender && phone!!
     }
 
-    private fun isBirthdateValid(): Boolean {
-        var isValid = false
-        val birthDate = fieldBirthDate.text.toString().split("/")
-        if (birthDate.size == 3) {
-            if (birthDate[0].toInt() in 1..30 &&
-                birthDate[1].toInt() in 1..12) {
-                isValid = true
-            }
-        }
-        return isValid
-    }
 
     private fun showWarning(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

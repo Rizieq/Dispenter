@@ -3,6 +3,7 @@ package com.intech.activity.ui.profile
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.intech.activity.EditProfileActivity
 import com.intech.activity.ui.base.BaseFragment
 import com.intech.data.UserToken
 import com.intech.data.UsersRepository
+import kotlinx.android.synthetic.main.activity_edit_profile.view.*
 import kotlinx.android.synthetic.main.fragment_profile_screen.*
 
 class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>() {
@@ -56,7 +58,17 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_profile_screen, container, false)
+
+
+        /*return inflater.inflate(R.layout.fragment_profile_screen, container, false)*/
+        val viewGroup = inflater.inflate(R.layout.fragment_profile_screen, container, false) as ViewGroup
+
+
+
+        /*viewGroup.rdiFemaleProfile.isChecked = false
+        viewGroup.rdiMaleProfile.isChecked = true*/
+
+        return viewGroup
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -106,6 +118,7 @@ class ProfileScreen : BaseFragment<ProfileScreen.State, ProfileScreen.Presenter>
                 this@ProfileScreen,
                 Observer {
                     fieldGender.setText(it)
+
                 }
             )
         }

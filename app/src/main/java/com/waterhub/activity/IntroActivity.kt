@@ -15,10 +15,10 @@ class IntroActivity : AppCompatActivity() {
         checkUserLoginOrNotLogin()
 
         signButton.setOnClickListener {
-            actionGoToRegister()
+            actionGoToSignIn()
         }
-        loginButton.setOnClickListener {
-            actionGoToLogin()
+        signupButton.setOnClickListener {
+            actionGoToSignUp()
         }
     }
 
@@ -38,12 +38,13 @@ class IntroActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun actionGoToRegister() {
+    private fun actionGoToSignIn() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
-    private fun actionGoToLogin() {
+    private fun actionGoToSignUp() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }

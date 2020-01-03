@@ -2,6 +2,7 @@ package com.intech.activity
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
@@ -20,6 +21,15 @@ class BarcodeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val data = intent.getStringExtra(TYPE)
+        Log.d("LOG_QR",data)
+
+        if (data.equals("normal")){
+            txtTitleBarcode.setText("Normal Water")
+        } else if(data.equals("dingin")){
+            txtTitleBarcode.setText("Cold Water")
+        }
+
+
         if (!data.isNullOrEmpty()) {
             actionGenerateQrcode(data)
         }
