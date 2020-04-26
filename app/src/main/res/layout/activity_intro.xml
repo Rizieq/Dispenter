@@ -1,51 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.IntroActivity"
-    android:background="@color/colorWhite">
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/waterhub_logo_new_01"
-        android:layout_above="@id/waterHubTitle"
-        android:layout_marginBottom="16dp"/>
+    android:background="@color/colorWhite"
+    tools:context=".activity.IntroActivity">
 
     <TextView
-        android:id="@+id/waterHubTitle"
+        android:id="@+id/titleIntro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/selamat_datang_di_water_hub"
+        android:textColor="@color/colorPurple"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
-        android:textSize="24dp"
-        android:textColor="@color/colorPrimary"
-        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/titleIntro2"
+        android:layout_width="241dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/kalau_ada_yang_gratis_ngapain_bayar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleIntro" />
+
+    <TextView
+        android:id="@+id/titleIntro3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/refillaja"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleIntro2" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/illustonboarding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <Button
-        android:id="@+id/signButton"
-        android:layout_width="200dp"
+        android:id="@+id/signUpButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/waterHubTitle"
-        android:layout_marginTop="36dp"
-        android:layout_centerHorizontal="true"
-        android:text="@string/sign_in"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_rounded_primary_light"
+        android:text="@string/create_account"
         android:textColor="@color/colorWhite"
-        android:textAllCaps="false"
-        android:background="@drawable/btn_rounded_primary_dark"/>
+        app:layout_constraintBottom_toTopOf="@+id/linear1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/signupButton"
-        android:layout_width="200dp"
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signButton"
-        android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true"
-        android:text="@string/register"
-        android:textColor="@color/colorWhite"
-        android:textAllCaps="false"
-        android:background="@drawable/btn_rounded_primary_light"/>
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-</RelativeLayout>
+
+        <TextView
+            android:id="@+id/titleIntro4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="@string/already_have_an_account" />
+
+        <TextView
+            android:id="@+id/titleIntroLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login" />
+    </LinearLayout>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

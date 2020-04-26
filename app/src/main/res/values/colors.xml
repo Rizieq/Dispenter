@@ -5,4 +5,12 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorPrimaryLight">#9783BE</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorPurple">#693F9F</color>
+    <color name="colorPurpleDark">#5C3392</color>
+    <color name="colorPurpleButton">#E3643CA0</color>
+    <color name="colorGray">#eeeeee</color>
+    <color name="colorRed">#ffcccb</color>
+    <color name="colorBlack">#BE000000</color>
+    <color name="colorBlackLiht">#0D000000</color>
+
 </resources>

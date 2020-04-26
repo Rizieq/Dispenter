@@ -36,8 +36,10 @@ events and properties to Mixpanel.
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.TumblerActivity"
-            android:label="@string/Tumbler"/>
+        <activity android:name=".activity.SplashScreenActivity"></activity>
+        <activity
+            android:name=".activity.TumblerActivity"
+            android:label="@string/Tumbler" />
         <activity
             android:name=".activity.AboutUsActivity"
             android:label="@string/about_us" />
